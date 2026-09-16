@@ -12,7 +12,7 @@ service cloud.firestore {
         && data.keys().hasAll(['name', 'email', 'message', 'createdAt'])
         && data.name is string && data.name.size() > 0 && data.name.size() <= 120
         && data.email is string && data.email.size() <= 200
-        && data.email.matches('^[^@\s]+@[^@\s]+[.][^@\s]+$')
+        && data.email.matches('^[^@\\s]+@[^@\\s]+[.][^@\\s]+$')
         && data.message is string && data.message.size() > 0 && data.message.size() <= 5000
         && (!data.keys().hasAny(['company']) || (data.company is string && data.company.size() <= 200))
         && (!data.keys().hasAny(['reason']) || (data.reason is string && data.reason.size() <= 100))
