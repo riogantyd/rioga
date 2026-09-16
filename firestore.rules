@@ -1,0 +1,34 @@
+rules_version = '2';
+
+// Contact form messages.
+// Anyone can create a message (that is the point of a contact form), but
+// nobody can read, edit or delete one from the browser — you read them in
+// the Firebase Console, signed in as the project owner.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidMessage(data) {
+      return data.keys().hasOnly(['name', 'email', 'company', 'reason', 'message', 'createdAt', 'page', 'userAgent'])
+        && data.keys().hasAll(['name', 'email', 'message', 'createdAt'])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 120
+        && data.email is string && data.email.size() <= 200
+        && data.email.matches('^[^@\s]+@[^@\s]+[.][^@\s]+$')
+        && data.message is string && data.message.size() > 0 && data.message.size() <= 5000
+        && (!data.keys().hasAny(['company']) || (data.company is string && data.company.size() <= 200))
+        && (!data.keys().hasAny(['reason']) || (data.reason is string && data.reason.size() <= 100))
+        && (!data.keys().hasAny(['page']) || (data.page is string && data.page.size() <= 300))
+        && (!data.keys().hasAny(['userAgent']) || (data.userAgent is string && data.userAgent.size() <= 500))
+        && data.createdAt == request.time;
+    }
+
+    match /messages/{messageId} {
+      allow read, update, delete: if false;
+      allow create: if isValidMessage(request.resource.data);
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

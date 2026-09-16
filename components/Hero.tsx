@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { hero, profile, stats } from '@/data/site';
-import { LinkedInIcon, MailIcon } from './Icons';
+import { ArrowIcon, LinkedInIcon, MailIcon } from './Icons';
 
 export function Hero() {
   return (
@@ -17,9 +17,10 @@ export function Hero() {
 
           <Link
             href="#case-studies"
-            className="mt-8 inline-flex rounded-lg bg-navy-900 px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-navy-700"
+            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-navy-900 px-6 py-3 text-[15px] font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:shadow-card-hover"
           >
             {hero.cta}
+            <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
 
           <dl className="mt-14 grid grid-cols-3 divide-x divide-line rounded-card bg-alt">
@@ -46,14 +47,14 @@ export function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-600 transition-colors hover:bg-alt hover:text-navy-700"
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-600 transition-colors duration-300 hover:bg-navy-700 hover:text-white"
               >
                 <LinkedInIcon />
               </a>
               <a
                 href={`mailto:${profile.email}`}
                 aria-label="Email"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-700 text-white transition-colors hover:bg-navy-900"
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-600 transition-colors duration-300 hover:bg-navy-700 hover:text-white"
               >
                 <MailIcon />
               </a>

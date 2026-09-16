@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ctaBand } from '@/data/site';
+import { ArrowIcon } from './Icons';
 
 export function CTA() {
   return (
@@ -11,9 +12,10 @@ export function CTA() {
         <p className="mx-auto mt-5 max-w-[560px] text-[15px] leading-7 text-white/80">{ctaBand.subtext}</p>
         <Link
           href="#contact"
-          className="mt-8 inline-flex rounded-lg bg-white px-6 py-3 text-[15px] font-medium text-navy-900 transition-opacity hover:opacity-90"
+          className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-[15px] font-medium text-navy-900 transition duration-300 hover:-translate-y-0.5 hover:shadow-card-hover"
         >
           {ctaBand.button}
+          <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

@@ -6,15 +6,15 @@
 
 export const profile = {
   name: "Rioga Natayudha",
-  shortName: "Rioga",
-  initial: "R",
+  shortName: "Rioga Natayudha",
+  initial: "RN",
   role: "Product Manager and IT Business Analyst",
   location: "Jakarta, Indonesia",
   email: "rioga.work@gmail.com",
   whatsapp: "6285111360711",
   phoneDisplay: "(+62) 851-1136-0711",
   linkedin: "https://linkedin.com/in/rioganatayudha",
-  cvPath: "/Rioga-Natayudha-CV.pdf", // put the PDF in /public
+  cvPath: "/public/CV_Rioga.pdf",
   heroPhoto: "/images/rioga.jpg",
 };
 
@@ -118,7 +118,7 @@ export const contact = {
 export const nav = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/#about" },
-  { label: "Work", href: "/#services" },
-  { label: "Process", href: "/#process" },
   { label: "Case Studies", href: "/#case-studies" },
+  { label: "Process", href: "/#process" },
+  { label: "Work", href: "/#services" },
 ];

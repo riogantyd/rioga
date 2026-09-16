@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { about, profile } from '@/data/site';
-import { DownloadIcon } from './Icons';
+import { ArrowIcon, DownloadIcon } from './Icons';
 
 export function About() {
   return (
@@ -12,14 +12,15 @@ export function About() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#case-studies"
-                className="inline-flex rounded-lg bg-navy-900 px-3 py-3 text-[15px] font-medium text-white transition-colors hover:bg-navy-700"
+                className="group inline-flex items-center gap-2 rounded-lg bg-navy-900 px-2 py-3 text-[15px] font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:shadow-card-hover"
               >
                 View case studies
+                <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <a
                 href={profile.cvPath}
                 download
-                className="inline-flex items-center gap-2 rounded-lg border border-navy-700 px-3 py-3 text-[15px] font-medium text-navy-700 transition-colors hover:bg-alt"
+                className="inline-flex items-center gap-2 rounded-lg border border-navy-700 px-2 py-3 text-[15px] font-medium text-navy-700 transition duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:text-white hover:shadow-card-hover"
               >
                 <DownloadIcon /> Download CV
               </a>

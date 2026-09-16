@@ -19,6 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
       <body>
+        {/* Scroll-reveal starts hidden; without JS it would never show, so unhide it. */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <Nav />
         <main>{children}</main>
         <Footer />

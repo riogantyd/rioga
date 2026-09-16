@@ -16,6 +16,10 @@ const config: Config = {
       },
       maxWidth: { content: '1200px' },
       borderRadius: { card: '12px' },
+      boxShadow: {
+        card: '0 1px 2px rgba(16, 24, 40, 0.04)',
+        'card-hover': '0 18px 40px -16px rgba(15, 32, 68, 0.35)',
+      },
     },
   },
   plugins: [],

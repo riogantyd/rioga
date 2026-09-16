@@ -19,13 +19,17 @@ export function Nav() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
-            <Link key={item.label} href={item.href} className="text-[15px] text-ink-600 transition-colors hover:text-navy-700">
+            <Link
+              key={item.label}
+              href={item.href}
+              className="relative text-[15px] text-ink-600 transition-colors duration-300 after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-0 after:rounded-full after:bg-navy-700 after:transition-all after:duration-300 hover:text-navy-700 hover:after:w-full"
+            >
               {item.label}
             </Link>
           ))}
           <Link
             href="/#contact"
-            className="rounded-lg bg-navy-700 px-5 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-navy-900"
+            className="rounded-lg bg-navy-700 px-5 py-2.5 text-[15px] font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-navy-900 hover:shadow-card-hover"
           >
             Contact
           </Link>
