@@ -19,7 +19,7 @@ export function About() {
               </Link>
               <a
                 href={profile.cvPath}
-                download
+                download="Rioga-Natayudha-CV.pdf"
                 className="inline-flex items-center gap-2 rounded-lg border border-navy-700 px-2 py-3 text-[15px] font-medium text-navy-700 transition duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:text-white hover:shadow-card-hover"
               >
                 <DownloadIcon /> Download CV

@@ -14,7 +14,7 @@ export const profile = {
   whatsapp: "6285111360711",
   phoneDisplay: "(+62) 851-1136-0711",
   linkedin: "https://linkedin.com/in/rioganatayudha",
-  cvPath: "/public/CV_Rioga.pdf",
+  cvPath: "/images/CV_Rioga.pdf", // file: public/images/CV_Rioga.pdf
   heroPhoto: "/images/rioga.jpg",
 };
 
