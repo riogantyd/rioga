@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T00:00:00Z",
+  "title": "Design System: Rioga Natayudha Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "primary", "displayName": "Prussian Ink", "canonical": "#14213D", "tonalRamp": ["#0A1120", "#14213D", "#22335A", "#3A4D78", "#5D6F97", "#8796B6", "#B6C0D5", "#E3E7EF"] },
+      "ink-700": { "role": "primary", "displayName": "Ink Wash", "canonical": "#22335A", "tonalRamp": ["#0D1528", "#18264A", "#22335A", "#344A7A", "#566C9A", "#8293B7", "#B3BED5", "#E2E6EF"] },
+      "redline": { "role": "tertiary", "displayName": "Redline Red", "canonical": "#C23A2B", "tonalRamp": ["#3D110C", "#6E1F17", "#9A2C20", "#C23A2B", "#D7604F", "#E58E80", "#F1BDB4", "#FAE7E3"] },
+      "paper": { "role": "neutral", "displayName": "Drafting Paper", "canonical": "#F3F4F1", "tonalRamp": ["#232421", "#41433E", "#62645E", "#868882", "#ABADA7", "#CFD1CB", "#E6E7E3", "#F3F4F1"] },
+      "sheet": { "role": "neutral", "displayName": "Sheet White", "canonical": "#FAFAF8", "tonalRamp": ["#252523", "#444441", "#666662", "#8A8A86", "#AFAFAB", "#D3D3CF", "#ECECE9", "#FAFAF8"] },
+      "graphite": { "role": "neutral", "displayName": "Graphite", "canonical": "#525B6B", "tonalRamp": ["#1A1D23", "#2E333D", "#414854", "#525B6B", "#6E7787", "#9199A6", "#BDC2CB", "#E6E8EC"] },
+      "hair": { "role": "neutral", "displayName": "Hairline Gray", "canonical": "#C9CDD3", "tonalRamp": ["#22252A", "#3E4249", "#5D626A", "#7F848C", "#A3A8AF", "#C9CDD3", "#E0E2E6", "#F2F3F5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "One per section, the section heading. Expanded width 112%, balanced wrap; hero tops out at 4.6rem." },
+      "headline": { "displayName": "Headline", "purpose": "Case study section headings, case-row titles, the next-study link." },
+      "title": { "displayName": "Title", "purpose": "Service items and process steps." },
+      "body": { "displayName": "Body", "purpose": "Default reading text; long-form case study paragraphs at 18px / 1.65 within 68ch." },
+      "lede": { "displayName": "Lede", "purpose": "Graphite paragraph beside a section heading." },
+      "label": { "displayName": "Field Label", "purpose": "Condensed caps data labels only: title-block cells, figcaptions, table headers, form fields, sheet index. Never an eyebrow." },
+      "numeral": { "displayName": "Numeral", "purpose": "Title-block stats in tabular expanded digits, zero-padded, counted up once on load." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-draw", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The one easing for every drawn line, fill wipe, rise and reveal." },
+      { "name": "frame-draw", "value": "1.1s ease-draw, scaleX from left / scaleY from top, 150ms stagger", "purpose": "Sheet frame lines draw on first load." },
+      { "name": "rise", "value": "0.9s ease-draw, translateY(14px) and fade", "purpose": "Hero and case study headline and lede on load." },
+      { "name": "appear", "value": "0.8s ease-out fade", "purpose": "Zone markers and hero figure on load." },
+      { "name": "count-up", "value": "0.9s ease-out cubic, once, from 700ms", "purpose": "Title-block stats count from zero once." },
+      { "name": "reveal", "value": "0.7s ease-draw, translateY(16px) and fade, 80ms stagger, once", "purpose": "Rows enter on scroll." },
+      { "name": "hover-fill", "value": "0.5s ease-draw, scaleX from left", "purpose": "Button fill wipe on hover and focus." },
+      { "name": "hover-underline", "value": "0.45s ease-draw, 1px underline from left", "purpose": "Link underline drawn on hover and focus." },
+      { "name": "hover-rule", "value": "0.7s ease-draw, 1px ink rule from left", "purpose": "Case row bottom rule redrawn on hover." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce disables all animation and transitions", "purpose": "Content renders fully at rest with final values." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "sheet-max", "value": "1320px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Primary action per zone: ink ground, a lighter ink fill wipes in from the left on hover.",
+      "html": "<a href=\"#\" class=\"ds-btn ds-btn-solid\">See the case studies<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15m0 0-5-5m5 5-5 5\"/></svg></a>",
+      "css": ".ds-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #14213D; border-radius: 0; padding: 14px 20px; font-family: Archivo, system-ui, sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; } .ds-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover::before, .ds-btn:focus-visible::before { transform: scaleX(1); } .ds-btn svg { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover svg { transform: translateX(4px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid #C23A2B; outline-offset: 3px; } .ds-btn-solid { background: #14213D; color: #F3F4F1; } .ds-btn-solid::before { background: #22335A; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action: ink outline; ink fills in from the left and text turns paper.",
+      "html": "<a href=\"#\" class=\"ds-btn ds-btn-line\">Get in touch<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15m0 0-5-5m5 5-5 5\"/></svg></a>",
+      "css": ".ds-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #14213D; border-radius: 0; padding: 14px 20px; font-family: Archivo, system-ui, sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; } .ds-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover::before, .ds-btn:focus-visible::before { transform: scaleX(1); } .ds-btn svg { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover svg { transform: translateX(4px); } .ds-btn:focus-visible { outline: 2px solid #C23A2B; outline-offset: 3px; } .ds-btn-line { background: transparent; color: #14213D; transition: color 0.3s; } .ds-btn-line::before { background: #14213D; } .ds-btn-line:hover, .ds-btn-line:focus-visible { color: #F3F4F1; }"
+    },
+    {
+      "name": "Paper Button",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "The action on the one inverted ink zone: paper ground, white fills in on hover.",
+      "html": "<div style=\"background:#14213D;padding:32px\"><a href=\"#\" class=\"ds-btn ds-btn-paper\">Start a conversation<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15m0 0-5-5m5 5-5 5\"/></svg></a></div>",
+      "css": ".ds-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #14213D; border-radius: 0; padding: 14px 20px; font-family: Archivo, system-ui, sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; } .ds-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover::before, .ds-btn:focus-visible::before { transform: scaleX(1); } .ds-btn:focus-visible { outline: 2px solid #C23A2B; outline-offset: 3px; } .ds-btn-paper { border-color: #F3F4F1; background: #F3F4F1; color: #14213D; } .ds-btn-paper::before { background: #FFFFFF; }"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Form field: condensed caps label over an underline-only input; focus turns the rule redline.",
+      "html": "<label class=\"ds-field-label\">Email *<input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field-label { display: block; font-family: Archivo, system-ui, sans-serif; font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.4; color: #525B6B; } .ds-input { display: block; margin-top: 4px; width: 100%; border: 0; border-bottom: 1px solid rgba(20, 33, 61, 0.4); border-radius: 0; background: transparent; padding: 10px 0; font-family: Archivo, system-ui, sans-serif; font-size: 17px; letter-spacing: normal; text-transform: none; color: #14213D; outline: none; transition: border-color 0.3s; } .ds-input::placeholder { color: rgba(82, 91, 107, 0.7); } .ds-input:hover { border-bottom-color: #14213D; } .ds-input:focus { border-bottom-color: #C23A2B; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky paper header: expanded name left, links with drawn underline, solid Contact button.",
+      "html": "<header class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-name ds-draw\">Rioga Natayudha</a><nav class=\"ds-nav-links\"><a href=\"#\" class=\"ds-draw\">Work</a><a href=\"#\" class=\"ds-draw\">Services</a><a href=\"#\" class=\"ds-draw\">About</a><a href=\"#\" class=\"ds-nav-cta\">Contact</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; background: #F3F4F1; border-bottom: 1px solid #C9CDD3; font-family: Archivo, system-ui, sans-serif; color: #14213D; } .ds-nav a { color: #14213D; text-decoration: none; } .ds-nav-name { font-weight: 600; font-stretch: 112%; letter-spacing: -0.01em; } .ds-nav-links { display: flex; align-items: center; gap: 36px; font-size: 15px; } .ds-draw { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1); } .ds-draw:hover, .ds-draw:focus-visible { background-size: 100% 1px; } .ds-nav a:focus-visible { outline: 2px solid #C23A2B; outline-offset: 3px; } .ds-nav .ds-nav-cta { background: #14213D; color: #F3F4F1; border: 1px solid #14213D; padding: 10px 20px; font-size: 14px; font-weight: 600; transition: background 0.3s; } .ds-nav .ds-nav-cta:hover { background: #22335A; }"
+    },
+    {
+      "name": "Title Block",
+      "kind": "custom",
+      "refersTo": "title-block-cell",
+      "description": "Signature container: a row of ink-ruled cells, each a field label over a value; stats in tabular expanded numerals.",
+      "html": "<div class=\"ds-tb\"><div class=\"ds-tb-cell\"><p class=\"ds-label\">Drawn by</p><p class=\"ds-tb-name\">Rioga Natayudha</p><p class=\"ds-tb-role\">Product Manager and IT Business Analyst</p></div><div class=\"ds-tb-cell\"><p class=\"ds-label\">Systems delivered</p><p class=\"ds-tb-num\">05</p></div><div class=\"ds-tb-cell\"><p class=\"ds-label\">Largest team</p><p class=\"ds-tb-num\">12</p></div><div class=\"ds-tb-cell\"><p class=\"ds-label\">Users validated</p><p class=\"ds-tb-num\">120</p></div></div>",
+      "css": ".ds-tb { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border-top: 1px solid #14213D; border-bottom: 1px solid #14213D; background: #F3F4F1; font-family: Archivo, system-ui, sans-serif; color: #14213D; } .ds-tb-cell { display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 20px 32px; border-right: 1px solid #14213D; } .ds-tb-cell:last-child { border-right: 0; } .ds-tb p { margin: 0; } .ds-label { font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.4; color: #525B6B; } .ds-tb-name { font-size: 16px; font-weight: 600; } .ds-tb-role { font-size: 15px; color: #525B6B; } .ds-tb-num { font-stretch: 112%; font-variant-numeric: tabular-nums; font-size: 48px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }"
+    },
+    {
+      "name": "Detail Figure",
+      "kind": "custom",
+      "refersTo": "detail-figure",
+      "description": "Images as numbered details: 1px ink frame with 8px inset and a two-label caption; the hero detail carries a redline circle marker.",
+      "html": "<figure class=\"ds-detail\"><span class=\"ds-marker\" aria-hidden=\"true\">A</span><div class=\"ds-detail-frame\"><div class=\"ds-detail-img\"></div></div><figcaption class=\"ds-detail-cap\"><span>Detail A</span><span>Jakarta</span></figcaption></figure>",
+      "css": ".ds-detail { position: relative; margin: 12px; max-width: 280px; font-family: Archivo, system-ui, sans-serif; } .ds-marker { position: absolute; left: -12px; top: -12px; z-index: 1; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 9999px; border: 1px solid #C23A2B; background: #F3F4F1; color: #C23A2B; font-size: 12px; font-weight: 600; } .ds-detail-frame { border: 1px solid #14213D; padding: 8px; } .ds-detail-img { aspect-ratio: 4 / 5; background: #FAFAF8; } .ds-detail-cap { margin-top: 12px; display: flex; justify-content: space-between; font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #525B6B; }"
+    },
+    {
+      "name": "Revision Table",
+      "kind": "custom",
+      "refersTo": "revision-table",
+      "description": "Case study lessons as a drawing's revision table: field-label header under an ink rule, hairline rows, redline circle letters.",
+      "html": "<table class=\"ds-rev\"><thead><tr><th>Rev</th><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td><span class=\"ds-rev-mark\">A</span></td><td class=\"ds-rev-change\">Interview the field inspectors before the managers.</td><td class=\"ds-rev-reason\">The managers described the process as documented; the inspectors described it as done.</td></tr></tbody></table>",
+      "css": ".ds-rev { width: 100%; border-collapse: collapse; text-align: left; font-family: Archivo, system-ui, sans-serif; color: #14213D; } .ds-rev thead { border-bottom: 1px solid #14213D; } .ds-rev th { padding: 0 24px 12px 0; font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #525B6B; } .ds-rev th:first-child { width: 48px; } .ds-rev tr { vertical-align: top; } .ds-rev tbody tr { border-bottom: 1px solid #C9CDD3; } .ds-rev td { padding: 24px 24px 24px 0; } .ds-rev-mark { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 9999px; border: 1px solid #C23A2B; color: #C23A2B; font-size: 12px; font-weight: 600; } .ds-rev-change { width: 38%; font-size: 18px; font-weight: 600; line-height: 1.375; letter-spacing: -0.01em; font-stretch: 108%; } .ds-rev-reason { font-size: 16px; line-height: 1.6; color: #525B6B; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drawing Sheet",
+    "overview": "Every page is an engineering drawing sheet. The viewport is inset by a paper margin and bounded by a one-pixel ink frame, with zone letters (A to F) along the top edge and row numbers (1 to 4) down the left on desktop. Content sits inside that frame as zones of the sheet; facts are filed in title blocks set as ruled tables; images are numbered details; corrections and emphasis arrive as redline. The register is calm, precise and premium: drafting paper, Prussian ink, a single red pen.\n\nDensity is moderate and ruled rather than boxed. Structure comes from lines, not fills: ink rules separate primary divisions, hairline gray rules separate rows within them, and almost nothing has a background of its own. One inverted ink zone per page carries the call to action. The page is deliberately still at rest; life comes from the load-draw of the frame and from hovers that draw lines and fills in from the left, \"drawn like a pen stroke\".\n\nThe system refuses the centred-name-plus-photo hero and the row of equal rounded cards. Lists of work, services and steps are set as drawing tables, parts lists and general notes instead.",
+    "keyCharacteristics": [
+      "Hairline sheet frame with zone markers, inset 8px on phones and 22px from md up.",
+      "One variable family (Archivo) in two width voices: expanded for display, condensed caps for data labels.",
+      "Ruled tables and title blocks instead of cards.",
+      "Square corners everywhere; only redline markers are round.",
+      "Redline red reserved for callouts, annotations, focus and error state.",
+      "Motion drawn like a pen stroke: from the left, one easing, CSS only, fully off under reduced motion."
+    ],
+    "rules": [
+      { "name": "The Red Pen Rule", "body": "Redline red marks a callout, an annotation, focus or an error, and nothing else. It never sets body text, a heading, a fill or decoration. If it is not something a checker would circle, it is ink.", "section": "colors" },
+      { "name": "The Two-Rule Rule", "body": "Ink rules (1px ink) open and close a structure (title block edges, table heads, list tops); hairline rules (1px hair) divide rows inside it. Don't use a third weight or a gray fill to separate content.", "section": "colors" },
+      { "name": "The Data Label Rule", "body": "Condensed caps labels name data: title-block cells, figcaptions, table and list headers, form fields, the sheet index and zone markers. They never sit above a heading as an eyebrow or kicker.", "section": "typography" },
+      { "name": "The Width Axis Rule", "body": "Hierarchy is set with width and size, not with extra families. Expanded for headings, normal for reading, condensed for labels.", "section": "typography" },
+      { "name": "The Drawn Depth Rule", "body": "Separate planes with a line or a tonal step between paper, sheet white and ink. Never with a shadow, blur or gradient.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** frame every page in the sheet: paper margin (8px / 22px), 1px ink frame, zone markers on desktop.",
+      "**Do** set facts as title blocks and ruled tables with condensed caps field labels over values.",
+      "**Do** use one 12-column grid per section, heading left and lede bottom-aligned on the right.",
+      "**Do** number images as details with a two-label figcaption and a 1px ink frame with 8px inset.",
+      "**Do** draw hover states from the left on cubic-bezier(0.16, 1, 0.3, 1): fills, underlines, rules.",
+      "**Do** keep stats in tabular expanded numerals, zero-padded.",
+      "**Do** disable all animation under reduced motion with content fully visible."
+    ],
+    "donts": [
+      "**Don't** use redline red for body text, headings, fills or decoration; it marks callouts, annotations, focus and errors only.",
+      "**Don't** put a condensed caps label above a heading as an eyebrow or kicker.",
+      "**Don't** round corners on anything except redline circle markers.",
+      "**Don't** use shadows, blurs or gradients for depth.",
+      "**Don't** set work or services as a row of equal cards.",
+      "**Don't** centre a name over a photo in the hero.",
+      "**Don't** add a second typeface; vary Archivo's width instead.",
+      "**Don't** animate at rest; no loops, parallax or ambient motion."
+    ]
+  }
+}

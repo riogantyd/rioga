@@ -1,65 +1,80 @@
 import Link from 'next/link';
 import { hero, profile, stats } from '@/data/site';
-import { ArrowIcon, LinkedInIcon, MailIcon } from './Icons';
+import { ArrowIcon } from './Icons';
+import { CountUp } from './CountUp';
 
 export function Hero() {
   return (
-    <section id="home" className="bg-white py-20 lg:py-28">
-      <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2">
-        <div>
-          <h1 className="font-heading text-5xl font-bold leading-[1.1] tracking-tight text-ink-900 lg:text-6xl">
-            {hero.greeting}
-            <br />
-            {profile.name}
-          </h1>
-
-          <p className="mt-4 max-w-[440px] text-[15px] leading-7 text-ink-600">{hero.bio}</p>
-
-          <Link
-            href="#case-studies"
-            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-navy-900 px-6 py-3 text-[15px] font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:shadow-card-hover"
-          >
-            {hero.cta}
-            <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-
-          <dl className="mt-14 grid grid-cols-3 divide-x divide-line rounded-card bg-alt">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-center px-4 py-5 text-center">
-                <dt className="font-heading text-[28px] font-bold leading-9 text-ink-900">{s.value}</dt>
-                <dd className="mt-4 text-[13px] leading-[18px] text-ink-600">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
+    <section
+      id="home"
+      data-sheet="Overview"
+      className="mx-2 flex min-h-[calc(100svh-80px)] flex-col border-b border-hair md:mx-[22px] md:min-h-[calc(100svh-108px)]"
+    >
+      <div className="mx-auto grid w-full max-w-sheet flex-1 grid-cols-1 items-center gap-12 px-5 py-14 md:px-10 lg:grid-cols-12 lg:py-16">
+        <div className="lg:col-span-8">
+          <h1 className="display anim-rise text-[clamp(2.6rem,5.2vw,4.6rem)] [animation-delay:250ms]">{hero.headline}</h1>
+          <p className="anim-rise mt-8 max-w-[44rem] text-[18px] leading-[1.6] text-graphite [animation-delay:400ms]">{hero.bio}</p>
         </div>
 
-        <div className="relative flex justify-center lg:justify-end">
-          <div className="relative">
-            {/* REPLACE: /public/images/rioga-hero.jpg */}
+        <figure className="anim-appear relative ml-3 w-full max-w-[220px] [animation-delay:500ms] sm:max-w-[280px] lg:col-span-4 lg:col-start-9 lg:ml-0 lg:max-w-none">
+          {/* Red callout: the photo is "Detail A" of the sheet */}
+          <span
+            aria-hidden
+            className="absolute -left-3 -top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-redline bg-paper text-[12px] font-semibold text-redline"
+          >
+            A
+          </span>
+          <span aria-hidden className="anim-draw-x absolute -left-24 top-[1px] hidden h-px w-[84px] origin-right bg-redline [animation-delay:900ms] lg:block" />
+          <div className="border border-ink p-2">
             <img
               src={profile.heroPhoto}
-              alt={profile.name}
-              className="aspect-[4/5] w-full max-w-[420px] rounded-2xl object-cover"
+              alt={`Portrait of ${profile.name}`}
+              width={800}
+              height={800}
+              className="aspect-[4/5] w-full object-cover object-top"
             />
-            <div className="absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-xl bg-white p-1.5 shadow-lg ring-1 ring-line">
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-600 transition-colors duration-300 hover:bg-navy-700 hover:text-white"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                aria-label="Email"
-                className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-600 transition-colors duration-300 hover:bg-navy-700 hover:text-white"
-              >
-                <MailIcon />
-              </a>
-            </div>
           </div>
+          <figcaption className="field mt-3 flex justify-between">
+            <span>Detail A</span>
+            <span>{profile.location}</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* Title block */}
+      <div className="grid grid-cols-3 border-t border-ink lg:grid-cols-12">
+        <div className="col-span-3 border-b border-ink px-5 py-5 md:px-10 lg:col-span-4 lg:border-b-0 lg:border-r">
+          <p className="field">Drawn by</p>
+          <p className="mt-2 text-[16px] font-semibold leading-snug">{profile.name}</p>
+          <p className="text-[15px] leading-snug text-graphite">{profile.role}</p>
+          <p className="mt-3 flex gap-5 text-[14px]">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="draw-link">
+              LinkedIn
+            </a>
+            <a href={`mailto:${profile.email}`} className="draw-link">
+              {profile.email}
+            </a>
+          </p>
+        </div>
+
+        {stats.map((s, i) => (
+          <div key={s.label} className={`flex flex-col justify-between gap-3 border-ink px-5 py-5 md:px-8 lg:col-span-2 ${i < 2 ? 'border-r' : 'lg:border-r'}`}>
+            <p className="field">{s.label}</p>
+            <p className="num text-[clamp(2rem,3.4vw,3rem)] font-semibold leading-none tracking-[-0.03em]">
+              <CountUp value={Number(s.value)} pad={s.value.length > 2 ? 3 : 2} delay={700 + i * 120} />
+            </p>
+          </div>
+        ))}
+
+        <div className="col-span-3 flex flex-col justify-center gap-2 border-t border-ink p-3 lg:col-span-2 lg:border-t-0 [&_.btn]:py-3 [&_.btn]:text-[14px]">
+          <Link href="#case-studies" className="btn btn-solid">
+            {hero.cta}
+            <ArrowIcon />
+          </Link>
+          <Link href="#contact" className="btn btn-line">
+            Get in touch
+            <ArrowIcon />
+          </Link>
         </div>
       </div>
     </section>

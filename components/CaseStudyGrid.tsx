@@ -5,50 +5,65 @@ import { ArrowIcon } from './Icons';
 import { Reveal } from './Reveal';
 import { Section } from './Section';
 
+// Details B, C, D, E: the hero portrait is Detail A.
+export const detailLetter = (i: number) => String.fromCharCode(66 + i);
+
 export function CaseStudyGrid() {
   return (
-    <Section id="case-studies" alt>
-      <div className="mx-auto max-w-[720px] text-center">
-        <h2 className="font-heading text-[40px] font-bold leading-[48px] tracking-tight">{portfolioIntro.heading}</h2>
-        <p className="mx-auto mt-4 max-w-[640px] text-[15px] leading-7 text-ink-600">{portfolioIntro.subtext}</p>
+    <Section id="case-studies" sheet="Selected work">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
+        <h2 className="display text-[clamp(2.4rem,4.6vw,4rem)] lg:col-span-6">{portfolioIntro.heading}</h2>
+        <p className="max-w-[36rem] text-graphite lg:col-span-5 lg:col-start-8">{portfolioIntro.subtext}</p>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-        {caseStudies.map((c, i) => (
-          <Reveal key={c.slug} delay={i * 90} className="h-full">
-            {/* The whole card is the link. Hover state: lifts, image zooms, button fills. */}
-            <Link
-              href={`/work/${c.slug}`}
-              aria-label={`Read the case study: ${c.cardTitle}`}
-              className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-white shadow-card outline-none transition duration-300 hover:-translate-y-1.5 hover:border-navy-700/25 hover:shadow-card-hover focus-visible:ring-2 focus-visible:ring-navy-700 focus-visible:ring-offset-2"
-            >
-              {/* REPLACE: thumbnails in /public/images. Keep all four the same treatment. */}
-              <div className="aspect-[16/10] w-full overflow-hidden bg-alt">
-                <img
-                  src={c.thumbnail}
-                  alt=""
-                  className="h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.06]"
-                />
-              </div>
+      <ul className="mt-16 border-t border-ink">
+        {caseStudies.map((c, i) => {
+          const timeline = c.meta.find((m) => m.label === 'Timeline')?.value;
+          return (
+            <li key={c.slug}>
+              <Reveal>
+                <Link
+                  href={`/work/${c.slug}`}
+                  className="group relative grid grid-cols-1 gap-8 border-b border-hair py-10 outline-none md:grid-cols-12 md:gap-10 lg:py-12"
+                >
+                  {/* Hover: the row's rule is redrawn in ink from the left */}
+                  <span aria-hidden className="absolute inset-x-0 -bottom-px h-px origin-left scale-x-0 bg-ink transition-transform duration-700 ease-draw group-hover:scale-x-100 group-focus-visible:scale-x-100" />
 
-              <div className="flex flex-1 flex-col p-6">
-                <span className="text-[12px] font-medium uppercase leading-5 tracking-[0.6px] text-ink-600">{c.tag}</span>
-                <h3 className="mt-2 font-heading text-[17px] font-semibold leading-[26px] text-ink-900 transition-colors duration-300 group-hover:text-navy-700">
-                  {c.cardTitle}
-                </h3>
-                <p className="mt-3 line-clamp-4 text-[14px] leading-6 text-ink-600">{c.cardDescription}</p>
+                  <figure className="md:col-span-5">
+                    {/* Image stays registered; hover adds a second frame line around it */}
+                    <div className="border border-ink p-2 outline outline-1 outline-offset-[5px] outline-transparent transition-[outline-color,outline-offset] duration-500 ease-draw group-hover:outline-offset-[3px] group-hover:outline-ink group-focus-visible:outline-ink">
+                      <div className="aspect-[16/10] overflow-hidden bg-sheet">
+                        <img
+                          src={c.thumbnail}
+                          alt={`Screenshot of ${c.cardTitle}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-left-top"
+                        />
+                      </div>
+                    </div>
+                    <figcaption className="field mt-3 flex justify-between">
+                      <span>Detail {detailLetter(i)}</span>
+                      <span>{c.tag}</span>
+                    </figcaption>
+                  </figure>
 
-                <div className="mt-auto pt-6">
-                  <span className="inline-flex w-fit items-center gap-2 rounded-lg border border-navy-700 px-4 py-2.5 text-[14px] font-medium text-navy-700 transition-colors duration-300 group-hover:bg-navy-700 group-hover:text-white">
-                    Case Study
-                    <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
-      </div>
+                  <div className="flex flex-col md:col-span-7 md:pt-2">
+                    <h3 className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.1] tracking-[-0.025em] [font-stretch:112%] [text-wrap:balance]">
+                      {c.cardTitle}
+                    </h3>
+                    <p className="mt-4 max-w-measure text-graphite">{c.cardDescription}</p>
+                    {timeline && <p className="field mt-5">{timeline}</p>}
+                    <span className="mt-auto inline-flex items-center gap-3 pt-8 text-[15px] font-semibold">
+                      Read the case study
+                      <ArrowIcon className="h-4 w-4 transition-transform duration-500 ease-draw group-hover:translate-x-1.5" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            </li>
+          );
+        })}
+      </ul>
     </Section>
   );
 }

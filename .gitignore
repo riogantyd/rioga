@@ -9,3 +9,11 @@ out
 .vercel
 
 .env*.local
+
+# Impeccable runtime output (keep surfaces/, design.json, config.json)
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/buildcheck/
+*.tsbuildinfo
+.impeccable/hook.cache.json

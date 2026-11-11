@@ -7,13 +7,14 @@ import { Services } from '@/components/Services';
 import { Testimonials } from '@/components/Testimonials';
 import { Contact } from '@/components/Contact';
 
+// Case studies come straight after the hero: they are the proof both audiences came for.
 export default function Home() {
   return (
     <>
       <Hero />
+      <CaseStudyGrid />
       <About />
       <Process />
-      <CaseStudyGrid />
       <CTA />
       <Services />
       <Testimonials />

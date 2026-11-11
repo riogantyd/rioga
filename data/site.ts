@@ -19,7 +19,7 @@ export const profile = {
 };
 
 export const hero = {
-  greeting: "Hello, I'm",
+  headline: "I turn paper processes into systems people actually use.",
   bio: "I'm a Product Manager and IT Business Analyst based in Jakarta. I turn manual, paper-based operations into digital systems that non-technical teams actually use — from national platforms at the higher education ministry to field operations in oil & gas inspection.",
   cta: "See my work",
 };
@@ -116,9 +116,8 @@ export const contact = {
 };
 
 export const nav = [
-  { label: "Home", href: "/#home" },
+  { label: "Work", href: "/#case-studies" },
   { label: "About", href: "/#about" },
-  { label: "Case Studies", href: "/#case-studies" },
   { label: "Process", href: "/#process" },
-  { label: "Work", href: "/#services" },
+  { label: "Services", href: "/#services" },
 ];

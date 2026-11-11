@@ -1,23 +1,22 @@
 import Link from 'next/link';
 import { ctaBand } from '@/data/site';
 import { ArrowIcon } from './Icons';
+import { Section } from './Section';
 
+// The one inverted zone: ink ground, paper type.
 export function CTA() {
   return (
-    <section className="bg-navy-900 py-24">
-      <div className="mx-auto w-full max-w-content px-6 text-center">
-        <h2 className="mx-auto max-w-[720px] font-heading text-[40px] font-bold leading-[48px] tracking-tight text-white">
-          {ctaBand.heading}
-        </h2>
-        <p className="mx-auto mt-5 max-w-[560px] text-[15px] leading-7 text-white/80">{ctaBand.subtext}</p>
-        <Link
-          href="#contact"
-          className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-[15px] font-medium text-navy-900 transition duration-300 hover:-translate-y-0.5 hover:shadow-card-hover"
-        >
-          {ctaBand.button}
-          <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
+    <Section sheet="Open to work" dark className="border-ink">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
+        <h2 className="display text-[clamp(2.2rem,4.4vw,3.8rem)] lg:col-span-8">{ctaBand.heading}</h2>
+        <div className="lg:col-span-4">
+          <p className="text-[17px] leading-[1.6] text-paper/80">{ctaBand.subtext}</p>
+          <Link href="#contact" className="btn btn-paper mt-8 w-full sm:w-auto">
+            {ctaBand.button}
+            <ArrowIcon />
+          </Link>
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,25 +1,23 @@
 import type { Config } from 'tailwindcss';
 
+// Drawing-sheet palette: see DESIGN.md.
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './data/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        navy: { 900: '#0F2044', 700: '#16306B' },
-        ink: { 900: '#101828', 600: '#475467' },
-        line: '#E4E7EC',
-        alt: '#F5F7FA',
+        paper: '#F3F4F1',
+        sheet: '#FAFAF8',
+        ink: { DEFAULT: '#14213D', 700: '#22335A' },
+        graphite: '#525B6B',
+        hair: '#C9CDD3',
+        redline: '#C23A2B',
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'sans-serif'],
-        sans: ['var(--font-body)', 'sans-serif'],
+        sans: ['var(--font-archivo)', 'system-ui', 'sans-serif'],
       },
-      maxWidth: { content: '1200px' },
-      borderRadius: { card: '12px' },
-      boxShadow: {
-        card: '0 1px 2px rgba(16, 24, 40, 0.04)',
-        'card-hover': '0 18px 40px -16px rgba(15, 32, 68, 0.35)',
-      },
+      maxWidth: { sheet: '1320px', measure: '68ch' },
+      transitionTimingFunction: { draw: 'cubic-bezier(0.16, 1, 0.3, 1)' },
     },
   },
   plugins: [],
