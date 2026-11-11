@@ -1,22 +1,24 @@
 import type { Config } from 'tailwindcss';
 
-// Drawing-sheet palette: see DESIGN.md.
+// Carbon-copy form palette: see DESIGN.md.
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './data/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        paper: '#F3F4F1',
-        sheet: '#FAFAF8',
-        ink: { DEFAULT: '#14213D', 700: '#22335A' },
-        graphite: '#525B6B',
-        hair: '#C9CDD3',
-        redline: '#C23A2B',
+        paper: '#FBFBF8', // white original
+        sheet: '#FFFFFF',
+        canary: '#F4E39A', // first copy
+        pink: '#F2C7CF', // second copy
+        ink: { DEFAULT: '#1F2A6B', 700: '#2E3B85' }, // carbon blue
+        muted: '#4B5385',
+        hair: '#B8BDD6', // ruled lines
+        stamp: '#C42B23',
       },
       fontFamily: {
         sans: ['var(--font-archivo)', 'system-ui', 'sans-serif'],
       },
-      maxWidth: { sheet: '1320px', measure: '68ch' },
+      maxWidth: { sheet: '1280px', measure: '68ch' },
       transitionTimingFunction: { draw: 'cubic-bezier(0.16, 1, 0.3, 1)' },
     },
   },

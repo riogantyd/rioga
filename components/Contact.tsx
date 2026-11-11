@@ -6,7 +6,7 @@ import { ArrowIcon } from './Icons';
 import { Section } from './Section';
 
 const field =
-  'mt-1 w-full border-0 border-b border-ink/40 bg-transparent py-2.5 text-[17px] text-ink outline-none transition-colors duration-300 placeholder:text-graphite/70 hover:border-ink focus:border-redline focus-visible:outline-none';
+  'mt-1 w-full border-0 border-b border-ink/40 bg-transparent py-2.5 text-[17px] text-ink outline-none transition-colors duration-300 placeholder:text-muted/70 hover:border-ink focus:border-stamp focus-visible:outline-none';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -67,15 +67,15 @@ export function Contact() {
   ];
 
   return (
-    <Section id="contact" sheet="Contact">
+    <Section id="contact" copy="canary">
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <h2 className="display text-[clamp(2.6rem,5vw,4.5rem)]">{contact.heading}</h2>
-          <p className="mt-6 max-w-[30rem] text-[18px] leading-[1.6] text-graphite">{contact.subtext}</p>
+          <p className="mt-6 max-w-[30rem] text-[18px] leading-[1.6] text-muted">{contact.subtext}</p>
 
           <dl className="mt-12 border-t border-ink">
             {details.map((d) => (
-              <div key={d.label} className="grid grid-cols-[7rem_1fr] items-baseline border-b border-hair py-4">
+              <div key={d.label} className="grid grid-cols-[7rem_1fr] items-baseline border-b border-ink/30 py-4">
                 <dt className="field">{d.label}</dt>
                 <dd className="text-[16px]">
                   {d.href ? (
@@ -97,7 +97,7 @@ export function Contact() {
         </div>
 
         <form
-          className="flex flex-col gap-7 border border-ink bg-sheet p-6 md:p-10 lg:col-span-6 lg:col-start-7"
+          className="stack stack-open flex flex-col gap-7 border border-ink/25 bg-sheet p-6 md:p-10 lg:col-span-6 lg:col-start-7"
           onSubmit={(e) => {
             e.preventDefault();
             void send();
@@ -186,11 +186,11 @@ export function Contact() {
               {status === 'sending' ? 'Sending…' : 'Send message'}
               <ArrowIcon />
             </button>
-            <p aria-live="polite" className="max-w-[22rem] text-[14px] leading-snug text-graphite">
+            <p aria-live="polite" className="max-w-[22rem] text-[14px] leading-snug text-muted">
               {status === 'sent' ? (
                 <span className="font-medium text-ink">Thank you, your message is in. I usually reply within a day.</span>
               ) : status === 'error' ? (
-                <span className="text-redline">
+                <span className="text-stamp">
                   Your message didn&apos;t go through{error ? `: ${error}` : '.'} Please email me at {profile.email}.
                 </span>
               ) : (

@@ -8,15 +8,15 @@ body {
   font-size: 17px;
   line-height: 1.6;
 }
-::selection { background: #14213D; color: #F3F4F1; }
-:focus-visible { outline: 2px solid #C23A2B; outline-offset: 3px; }
+::selection { background: #F4E39A; color: #1F2A6B; }
+:focus-visible { outline: 2px solid #C42B23; outline-offset: 3px; }
 a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-html { scrollbar-color: #14213D #F3F4F1; }
+html { scrollbar-color: #1F2A6B #FBFBF8; }
 
 @layer components {
   /* Width-axis voices of Archivo: expanded for display, condensed caps for field labels. */
   .display { font-stretch: 112%; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
-  .field { font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.4; @apply text-graphite; }
+  .field { font-stretch: 75%; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.4; @apply text-muted; }
   .num { font-stretch: 112%; font-variant-numeric: tabular-nums; }
 
   /* One button family. Hover: a fill draws in from the left, like a pen stroke. */
@@ -39,29 +39,43 @@ html { scrollbar-color: #14213D #F3F4F1; }
   .btn-line::before { @apply bg-ink; }
   .btn-line:hover, .btn-line:focus-visible { @apply text-paper; transition: color 0.3s; }
   .btn-paper { @apply border-paper bg-paper text-ink; }
-  .btn-paper::before { @apply bg-white; }
+  .btn-paper::before { @apply bg-canary; }
+
+  /* Triplicate stack: the canary and pink copies sit under the element, offset by --o1/--o2. */
+  .stack { position: relative; isolation: isolate; --o1: 0px; --o2: 0px; }
+  .stack::before, .stack::after { content: ''; position: absolute; inset: 0; transition: translate 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .stack::before { z-index: -1; @apply bg-canary; translate: var(--o1) var(--o1); }
+  .stack::after { z-index: -2; @apply bg-pink; translate: var(--o2) var(--o2); }
+  .stack-open { --o1: 6px; --o2: 12px; }
+  @media (min-width: 768px) { .stack-open { --o1: 10px; --o2: 20px; } }
+  .group:hover .stack-hover, .group:focus-visible .stack-hover { --o1: 7px; --o2: 14px; }
+
+  /* Rubber stamp: rotated, ink sits slightly into the paper. */
+  .rubber {
+    @apply inline-block border-[3px] border-current px-3 py-1 font-extrabold uppercase text-stamp;
+    font-stretch: 112%; letter-spacing: 0.12em; rotate: -7deg; mix-blend-mode: multiply; opacity: 0.88;
+  }
+
+  /* Perforated tear line between parts of the form. */
+  .perf { height: 6px; background: radial-gradient(circle, #B8BDD6 1.3px, transparent 1.7px) 0 50% / 9px 6px repeat-x; }
 
   /* Underline that draws from the left on hover. */
   .draw-link { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
   .draw-link:hover, .draw-link:focus-visible { background-size: 100% 1px; }
 }
 
-/* Sheet frame drawn on first load. */
-@keyframes draw-x { from { transform: scaleX(0); } }
-@keyframes draw-y { from { transform: scaleY(0); } }
+/* Load motion: copies slide out from under the top sheet, then the stamp presses in. */
+@keyframes copy-out { from { translate: 0 0; } }
+@keyframes stamp-in { from { opacity: 0; scale: 1.5; } 60% { opacity: 1; scale: 0.96; } }
+.anim-copies::before { animation: copy-out 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+.anim-copies::after { animation: copy-out 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+.anim-stamp { animation: stamp-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1s both; }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 @keyframes appear { from { opacity: 0; } }
-.anim-draw-x { transform-origin: left; animation: draw-x 1.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.anim-draw-y { transform-origin: top; animation: draw-y 1.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .anim-rise { animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .anim-appear { animation: appear 0.8s ease-out both; }
 
-/* Scroll reveal: see components/Reveal.tsx. Content rises and fades in once. */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal-in { opacity: 1; transform: none; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
 }

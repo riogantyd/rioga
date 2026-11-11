@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { testimonials } from '@/data/site';
 import { Section } from './Section';
 
-// The quote is the sheet's sign-off: set large, with the approver in a title-block row beneath.
+// The quote is the form's sign-off: set large, with the approver in a title-block row beneath.
 export function Testimonials() {
   const [i, setI] = useState(0);
   const items = testimonials.items;
@@ -12,7 +12,7 @@ export function Testimonials() {
   const t = items[i];
 
   return (
-    <Section sheet="Sign-off">
+    <Section>
       <h2 className="sr-only">{testimonials.heading}</h2>
       <figure className="grid grid-cols-1 lg:grid-cols-12">
         <blockquote lang="id" className="display text-[clamp(1.7rem,3.2vw,2.75rem)] !font-medium !leading-[1.2] lg:col-span-10">

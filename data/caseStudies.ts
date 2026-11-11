@@ -31,6 +31,7 @@ export type CaseStudy = {
   subtitle: string;
   cardDescription: string;
   thumbnail: string;
+  stamp: string; // status stamp on the slip; keep it true to the "Results" section
   meta: { label: string; value: string }[];
   sections: { heading: string; blocks: Block[] }[];
 };
@@ -39,6 +40,7 @@ export const caseStudies: CaseStudy[] = [
   // ===========================================================
   {
     slug: "adiwarna-pratama",
+    stamp: "In use",
     tag: "Business Analysis",
     cardTitle: "Operations System — PT Adiwarna Pratama",
     title: "Operations System — PT Adiwarna Pratama",
@@ -239,6 +241,7 @@ export const caseStudies: CaseStudy[] = [
   // ===========================================================
   {
     slug: "sister-bkd-cat",
+    stamp: "Delivered",
     tag: "Product Management",
     cardTitle: "SISTER — BKD Dashboard & Computer Assisted Test",
     title: "SISTER — BKD Dashboard & Computer Assisted Test",
@@ -428,6 +431,7 @@ export const caseStudies: CaseStudy[] = [
   // ===========================================================
   {
     slug: "appiks",
+    stamp: "Validated",
     tag: "Product Ownership",
     cardTitle: "APPIKS — Safeguarding Platform for Schools",
     title:
@@ -667,6 +671,7 @@ export const caseStudies: CaseStudy[] = [
   // ===========================================================
   {
     slug: "accounting-worksheet",
+    stamp: "Accepted at UAT",
     tag: "Process Digitalization",
     cardTitle: "Accounting Worksheet System",
     title: "Cutting a 39-Step Lookup Down to One Click",
@@ -840,6 +845,7 @@ export function getNeighbours(slug: string) {
 //   subtitle: 'One line explaining what the project actually was',
 //   cardDescription: 'Two sentences for the homepage card. Leave one question unanswered so the card earns the click.',
 //   thumbnail: '/images/case-slug.jpg',
+//   stamp: 'Delivered',
 //   meta: [
 //     { label: 'Role', value: '' },
 //     { label: 'Client', value: '' },

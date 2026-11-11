@@ -24,7 +24,7 @@ export function RevisionTable({ blocks }: { blocks: Block[] }) {
         {rows.map((r, i) => (
           <tr key={i} className="border-b border-hair align-top">
             <td className="py-6">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-redline text-[12px] font-semibold text-redline">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-stamp text-[12px] font-semibold text-stamp">
                 {String.fromCharCode(65 + i)}
               </span>
             </td>
@@ -33,13 +33,13 @@ export function RevisionTable({ blocks }: { blocks: Block[] }) {
               {/* On phones the reason sits under the change */}
               <div className="md:hidden">
                 {r.reason.map((p, j) => (
-                  <p key={j} className="mt-3 text-[16px] leading-[1.6] text-graphite">{p}</p>
+                  <p key={j} className="mt-3 text-[16px] leading-[1.6] text-muted">{p}</p>
                 ))}
               </div>
             </td>
             <td className="hidden py-6 md:table-cell">
               {r.reason.map((p, j) => (
-                <p key={j} className={`text-[16px] leading-[1.6] text-graphite ${j > 0 ? 'mt-3' : ''}`}>{p}</p>
+                <p key={j} className={`text-[16px] leading-[1.6] text-muted ${j > 0 ? 'mt-3' : ''}`}>{p}</p>
               ))}
             </td>
           </tr>
@@ -67,7 +67,7 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
             <ul key={i} className="mt-6 max-w-measure border-t border-hair">
               {b.items.map((it, j) => (
                 <li key={j} className="grid grid-cols-[2.25rem_1fr] border-b border-hair py-3.5 text-[17px] leading-[1.6]">
-                  <span className="num pt-[3px] text-[13px] font-semibold text-graphite">{String(j + 1).padStart(2, '0')}</span>
+                  <span className="num pt-[3px] text-[13px] font-semibold text-muted">{String(j + 1).padStart(2, '0')}</span>
                   <span>{it}</span>
                 </li>
               ))}

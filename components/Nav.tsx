@@ -9,8 +9,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper pt-2 md:pt-[22px]">
-      <div className="mx-2 border-b border-hair md:mx-[22px]">
+    <header className="sticky top-0 z-50 bg-paper">
+      <div className="border-b-[3px] border-double border-ink">
         <div className="mx-auto flex h-16 w-full max-w-sheet items-center justify-between px-5 md:px-10">
           <Link href="/" className="draw-link font-semibold [font-stretch:112%] tracking-[-0.01em]">
             {profile.name}
@@ -51,7 +51,7 @@ export function Nav() {
                 className="flex items-center justify-between border-b border-hair py-4 text-[20px] font-semibold [font-stretch:112%]"
               >
                 {item.label}
-                <ArrowIcon className="h-4 w-4 text-graphite" />
+                <ArrowIcon className="h-4 w-4 text-muted" />
               </Link>
             ))}
             <Link href="/#contact" onClick={() => setOpen(false)} className="btn btn-solid mt-6 w-full">

@@ -1,23 +1,26 @@
-// One zone of the drawing sheet. `sheet` names it in the corner sheet index.
+// One part of the form pad. `copy` picks which sheet of the triplicate it is printed on.
+const grounds = {
+  white: 'bg-paper',
+  canary: 'bg-canary',
+  pink: 'bg-pink',
+  carbon: 'bg-ink text-paper',
+};
+
 export function Section({
   id,
-  sheet,
-  dark = false,
+  copy = 'white',
   className = '',
   children,
 }: {
   id?: string;
-  sheet: string;
-  dark?: boolean;
+  copy?: keyof typeof grounds;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      data-sheet={sheet}
-      className={`mx-2 border-b border-hair md:mx-[22px] ${dark ? 'bg-ink text-paper' : ''} ${className}`}
-    >
+    <section id={id} className={`${grounds[copy]} ${className}`}>
+      {/* White parts are torn from the same pad: a perforation marks each tear */}
+      {copy === 'white' && <div aria-hidden className="perf" />}
       <div className="mx-auto w-full max-w-sheet px-5 py-20 md:px-10 md:py-28">{children}</div>
     </section>
   );
